@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
   public author: any = {
     name: 'Elliott',
     firstname: 'Kings'
-  }
+  };
 
   constructor() { }
 
