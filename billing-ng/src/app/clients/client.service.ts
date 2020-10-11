@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of, Observable } from 'rxjs';
 import { Client } from './client';
 import { CLIENTS } from './client.json';
 
@@ -9,7 +10,7 @@ export class ClientService {
 
   constructor() { }
 
-  public getClients(): Client[] {
-    return CLIENTS;
+  public getClients(): Observable<Client[]> {
+    return of(CLIENTS);
   }
 }
