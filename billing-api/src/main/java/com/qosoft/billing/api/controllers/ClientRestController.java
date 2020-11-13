@@ -3,10 +3,8 @@ package com.qosoft.billing.api.controllers;
 import com.qosoft.billing.api.models.entity.Client;
 import com.qosoft.billing.api.models.services.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,16 @@ public class ClientRestController {
     @GetMapping("/clients")
     public List<Client> index() {
         return clientServiceImpl.findAll();
+    }
+
+    @PostMapping("/clients")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client create(@RequestBody Client client) {
+        return clientServiceImpl.save(client);
+    }
+
+    @GetMapping("/clients/{id}")
+    public Client show(@PathVariable Long id) {
+        return clientServiceImpl.findById(id);
     }
 }
